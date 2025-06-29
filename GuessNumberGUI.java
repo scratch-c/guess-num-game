@@ -1,11 +1,4 @@
 package guessnum;
-
-/**
- * 猜数字游戏GUI版本
- * @author [您的名字]
- * @version 1.0
- * @date " + new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) + "
- */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -73,13 +66,6 @@ public class GuessNumberGUI extends JFrame {
         // 创建顶部控制面板
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-        
-        // 添加游戏标题
-        JLabel gameTitle = new JLabel("猜数字游戏");
-        gameTitle.setFont(new Font("微软雅黑", Font.BOLD, 24));
-        gameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        topPanel.add(gameTitle);
-        topPanel.add(Box.createVerticalStrut(10));
 
         // 创建模式选择面板
         JPanel modePanel = new JPanel();
@@ -170,7 +156,6 @@ public class GuessNumberGUI extends JFrame {
         // 猜测历史列表
         JLabel historyLabel = new JLabel("猜测历史:");
         historyLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        historyLabel.setFont(new Font("微软雅黑", Font.BOLD, 14));
         JList<String> historyList = new JList<>(historyListModel);
         historyList.setAlignmentX(Component.LEFT_ALIGNMENT);
         JScrollPane historyScrollPane = new JScrollPane(historyList);
@@ -185,6 +170,15 @@ public class GuessNumberGUI extends JFrame {
         centerPanel.add(gamePanel);
         centerPanel.add(infoPanel);
         add(centerPanel, BorderLayout.CENTER);
+
+        // 添加作者信息面板
+        JPanel authorPanel = new JPanel();
+        authorPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
+        JLabel authorLabel = new JLabel("By 洛谷scratch_szc  uid:1260767");
+        authorLabel.setFont(new Font("宋体", Font.PLAIN, 14));
+        authorLabel.setForeground(Color.GRAY);
+        authorPanel.add(authorLabel);
+        add(authorPanel, BorderLayout.SOUTH);
 
         // 应用范围按钮事件
         applyRangeButton.addActionListener(e -> {
@@ -230,12 +224,6 @@ public class GuessNumberGUI extends JFrame {
                 checkGuess();
             }
         });
-        
-        // 设置按钮样式
-        guessButton.setBackground(new Color(70, 130, 180));
-        guessButton.setForeground(Color.WHITE);
-        guessButton.setFocusPainted(false);
-        guessButton.setFont(new Font("微软雅黑", Font.BOLD, 14));
 
         // 添加回车键事件
         guessField.addActionListener(new ActionListener() {
